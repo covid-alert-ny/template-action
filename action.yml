@@ -1,4 +1,4 @@
-name: 'Template Action"
+name: 'Template Action'
 description: 'Generates templated files'
 inputs:
   template:
