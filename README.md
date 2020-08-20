@@ -14,7 +14,7 @@ This action templates files using handlebarsjs
 
 ### `vars`
 
-**Required** The variables to use in replacement
+**Required** The variables to use in replacement (expects JSON input)
 
 ## Outputs
 
@@ -27,7 +27,9 @@ uses: project-vagabond/template-action
 with:
   template: 'input.template'
   output: 'output.txt'
-  vars:
-    var1: 'foo'
-    var2: 'bar'
+  vars: |
+    {
+      "var1": "foo"
+      "var2": "bar"
+    }
 ```
