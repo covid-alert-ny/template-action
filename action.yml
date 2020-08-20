@@ -1,0 +1,17 @@
+name: 'Template Action"
+description: 'Generates templated files'
+inputs:
+  template:
+    description: 'Input template file path'
+    required: true
+  output:
+    description: 'Output file path to store templated output'
+    required: true
+  vars:
+    description: 'Variables to use for replacement'
+    required: true
+
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
+

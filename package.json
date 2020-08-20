@@ -1,0 +1,22 @@
+{
+  "name": "template-action",
+  "version": "1.0.0",
+  "description": "Generates Handlebarjs templated Output",
+  "main": "index.js",
+  "scripts": {
+    "test": "env-cmd -f test.env node index.js",
+    "dist": "ncc build index.js"
+  },
+  "keywords": [],
+  "author": "Steven Bower <sbower@alcyon.net>",
+  "dependencies": {
+    "@actions/core": "^1.2.4",
+    "@actions/github": "^4.0.0",
+    "handlebars": "^4.7.6"
+  },
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@zeit/ncc": "^0.22.3",
+    "env-cmd": "^10.1.0"
+  }
+}
