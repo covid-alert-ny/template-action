@@ -2,12 +2,14 @@ const core = require('@actions/core');
 const github = require('@actions/github');
 const handlebars = require('handlebars');
 const fs = require('fs');
+const path = require('path');
+const mkdirp = require('mkdirp');
 
 try {
 
   const template = core.getInput('template');
   const output = core.getInput('output');
-  const vars = JSON.parse(core.getInput('vars'));
+  const vars = core.getInput('vars');
 
   fs.readFile(template, 'utf8', function(err, data){
     if(err){
@@ -15,14 +17,22 @@ try {
     }
 
     var tpl = handlebars.compile(data)
-    var out = tpl(vars)
+    var out = tpl(JSON.parse(vars))
 
-    fs.writeFile(output, out, 'utf8', function(err){
-      if(err){
-        throw new Error(err)
-      }
-      console.log(`Generated templated output: ${template} -> ${output}`)
-    })
+    if( output == "-" ){
+      process.stdout.write(out);
+    } else {
+      var p = path.dirname(output)
+      mkdirp.sync(p)
+
+      fs.writeFile(output, out, 'utf8', function(err){
+        if(err){
+          throw new Error(err)
+        }
+        console.log(`Generated templated output: ${template} -> ${output}`)
+      });
+
+    }
 
   });
 

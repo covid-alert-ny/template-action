@@ -4,7 +4,7 @@
   "description": "Generates Handlebarjs templated Output",
   "main": "index.js",
   "scripts": {
-    "test": "env-cmd -f test.env node index.js",
+    "test": "rm -rf output && env-cmd -f test.env node index.js",
     "dist": "ncc build index.js"
   },
   "keywords": [],
@@ -12,7 +12,8 @@
   "dependencies": {
     "@actions/core": "^1.2.4",
     "@actions/github": "^4.0.0",
-    "handlebars": "^4.7.6"
+    "handlebars": "^4.7.6",
+    "mkdirp": "^1.0.4"
   },
   "license": "Apache-2.0",
   "devDependencies": {
